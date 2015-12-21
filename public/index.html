@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html ng-app = "myApp">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<title>Gossip Girls App</title>
+</head>
+<body>
+	<div class="container" ng-controller="AppCtrl">
+		<h1>Gossip Girls Notification App</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<td><input class="form-control" placeholder = "name" ng-model= contact.name></input></td>
+					<td><input class="form-control" placeholder = "location" ng-model= contact.location></input></td>
+					<td><button class="btn btn-primary" ng-click= "addDetails()">Add</button></td>
+					<td><button class="btn btn-success" ng-click= "update()">Update</button></td>		
+				</tr>
+				<tr ng-repeat="item in details">
+					<td>{{item.name}}</td>
+					<td>{{item.location}}</td>
+					<td><button class="btn btn-danger" ng-click= "remove(item._id)">Remove</button></td>
+					<td><button class="btn btn-info" ng-click= "edit(item._id)">Edit</button></td>
+				</tr>
+			</thead>
+		</table>
+	</div>	
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+	<script src = "controllers/controller.js"></script>
+	<script src= "http://localhost:3000/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io.connect('http://localhost:3000/');
+	    socket.on('dataChanged', function (msg) {
+		     alert("Database Change Detected- "+ "\nLast Operation: " + msg.Operation + "\nDetail: " + msg.Details);
+	    });
+	</script>
+</body>
+</html>
