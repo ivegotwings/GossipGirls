@@ -24,6 +24,7 @@ I soon realised that MongoDB maintains an operation log also known as oplog. Thi
 and waits for new operations on the database. This is what I used.
 
 WHAT I HAVE NOT BUILT-
+
 User subscription model. Write now all changes are broadcasted to the client, however we get the all the details of the document modified and the collection to which the change has
 been made. This can be further be used to only inform users which have subscribed to changes in particular
 fields or documents.
