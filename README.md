@@ -4,6 +4,7 @@ NotificationApp Using MongoDB OPLOG
 RUNNING THE APP-
 cd to /GossipGirls
 run node server.js
+opent the browser of your choice and browse to http://localhost:3000
 
 ABOUT THE APP-
 This is a real time notification app. The server listens to changes via the opLog mongodb url via a tailable cursor. The tailable
